@@ -27,4 +27,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: richardmikupro/ubuntu:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/$GITHUB_REPOSITORY:latest
