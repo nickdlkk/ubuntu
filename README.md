@@ -19,13 +19,13 @@ This Docker image is based on the latest Ubuntu image and has been configured to
 To build the Docker image, navigate to the directory containing the Dockerfile and run:
 
 ```sh
-docker build -t richardmikupro/ubuntu .
+docker build -t 24workers/ubuntu .
 ```
 
 To run a container using the built image:
 
 ```sh
-docker run -it richardmikupro/ubuntu
+docker run -it 24workers/ubuntu
 ```
 
 This will start a container and open a bash shell.
