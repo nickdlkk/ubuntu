@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM python:3.11-slim
 
 RUN sed -i 's|http://archive.ubuntu.com|http://mirrors.aliyun.com|g; s|http://security.ubuntu.com|http://mirrors.aliyun.com|g' /etc/apt/sources.list.d/ubuntu.sources
 
@@ -18,9 +18,8 @@ RUN sed -i \
     apt-get update
 
 
-RUN apt-get install -y \
-        openssh-server \
-        sudo && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
     
 CMD [ "/bin/bash" ]
