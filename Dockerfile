@@ -1,12 +1,12 @@
 FROM python:3.11-slim
 
 RUN tee /etc/apt/sources.list.d/debian.sources <<EOF
-    Types: deb
-    URIs: https://mirrors.tuna.tsinghua.edu.cn/debian
-    Suites: bookworm bookworm-updates bookworm-backports
-    Components: main contrib non-free non-free-firmware
-    Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
-    EOF
+Types: deb
+URIs: https://mirrors.tuna.tsinghua.edu.cn/debian
+Suites: bookworm bookworm-updates bookworm-backports
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
 
 # 设置时区（可选）和非交互模式
 ENV DEBIAN_FRONTEND=noninteractive
