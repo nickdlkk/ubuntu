@@ -28,8 +28,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.REPO_NAME }}:latest
-          
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.BRANCH_NAME }}:latest
+
       - name: Create or update GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
