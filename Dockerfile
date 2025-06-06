@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 # 设置npm和pnpm镜像源并安装pnpm
-ENV PNPM_VERSION=8.17.0
+ENV PNPM_VERSION=latest-10
 RUN corepack enable && \
     corepack prepare pnpm@${PNPM_VERSION} --activate && \
     npm config set registry https://registry.npmmirror.com && \
