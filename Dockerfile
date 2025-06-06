@@ -19,14 +19,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-transport-https && \
     rm -rf /var/lib/apt/lists/*
 
-# 设置npm淘宝镜像源并安装pnpm
-RUN npm config set registry https://registry.npmmirror.com && \
-    # 安装指定版本的pnpm（可修改版本号）
-    npm install -g pnpm@8 && \
-    # 设置pnpm淘宝镜像源
+# 设置npm和pnpm镜像源并安装pnpm
+ENV PNPM_VERSION=8.17.0
+RUN corepack enable && \
+    corepack prepare pnpm@${PNPM_VERSION} --activate && \
+    npm config set registry https://registry.npmmirror.com && \
     pnpm config set registry https://registry.npmmirror.com && \
-    # 清理缓存减小镜像体积
-    npm cache clean --force && \
-    pnpm store prune
+    pnpm config set store-dir /pnpm-store && \
+    rm -rf /tmp/* /root/.npm /root/.cache
 
 CMD [ "/bin/bash" ]
