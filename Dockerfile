@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM node:20-bullseye
 
 RUN tee /etc/apt/sources.list.d/debian.sources <<EOF
 Types: deb
@@ -14,6 +14,8 @@ RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
+    libvips-dev \
+    build-essential \
     apt-transport-https && \
     rm -rf /var/lib/apt/lists/*
     
